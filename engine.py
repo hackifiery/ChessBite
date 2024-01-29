@@ -1,13 +1,17 @@
 import chess
+import sys
 
 values = {'n': 3, 'p': 1, 'b': 3, 'q': 9, 'r': 5, 'k': 0}
 numbering = ['', 'p', 'n', 'b', 'r', 'q', 'k']
+
+class RestartEval(BaseException): pass
 
 class Evaluate:
     def __init__(self, fen):
         self.values = values
         self.numbering = numbering
-        self.b = chess.Board(fen)
+        try: self.b = chess.Board(fen)
+        except ValueError: raise RestartEval
 
     def evaluate_position(self):
         whitematerial = 0
