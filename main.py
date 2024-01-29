@@ -1,5 +1,6 @@
 import chess
-from engine import Evaluate
+from engine import Evaluate, RestartEval
+import sys
 
 print('Welcome to ChessBite!')
 
@@ -8,7 +9,11 @@ def main():
     fen_input = input('Enter the FEN string: ')
 
     # Create the evaluation engine
-    e = Evaluate(fen_input)
+    try:
+        e = Evaluate(fen_input)
+    except RestartEval:
+        print('Error: invalid FEN.', file = sys.stderr)
+        main()
 
     # Get the best moves and their evaluations
     best_moves, advantages = e.get_best_moves(num_moves=3)
@@ -22,4 +27,11 @@ def main():
         print("No legal moves found.")
 
 while True:
-    main()
+    try:
+        main()
+    except ValueError:
+        print('Error: invalid FEN.', file = sys.stderr)
+        main()
+    except RestartEval:
+        print('An error occurred.', file = sys.stderr)
+        main()
