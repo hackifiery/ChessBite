@@ -1,9 +1,9 @@
 import chess
 from engine import Evaluate
 
-def main():
-    print('Welcome to ChessBite!')
+print('Welcome to ChessBite!')
 
+def main():
     # Get user FEN input
     fen_input = input('Enter the FEN string: ')
 
@@ -21,5 +21,5 @@ def main():
     else:
         print("No legal moves found.")
 
-if __name__ == "__main__":
+while True:
     main()
