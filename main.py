@@ -1,28 +1,25 @@
-import engine
 import chess
+from engine import Evaluate
 
-print('Welcome. Enter your FEN here to get the best move: ')
-a = input('FEN: ')
+def main():
+    print('Welcome to ChessBite!')
 
-b = chess.Board(a)
-e = engine.Evaluate(a)
+    # Get user FEN input
+    fen_input = input('Enter the FEN string: ')
 
-# Get the best move
-best_move = e.get_best_move()
-b.push(best_move)
-ne = engine.Evaluate(b.fen())
+    # Create the evaluation engine
+    e = Evaluate(fen_input)
 
-# Print the updated board after the best move
-print("Board after the best move:")
-print(b)
+    # Get the best moves and their evaluations
+    best_moves, advantages = e.get_best_moves(num_moves=3)
 
-# Print material advantage after making the best move
-advantage_after_best_move = ne.get_material()
-if advantage_after_best_move > 0:
-    print('White is winning (+%d advantage)' % advantage_after_best_move)
-elif advantage_after_best_move < 0:
-    print('Black is winning (%d advantage)' % advantage_after_best_move)
-else:
-    print('Tied (+0 advantage)')
+    if best_moves:
+        # Print the best moves and their evaluations
+        print("Top 3 Moves and Evaluations:")
+        for move, advantage in zip(best_moves, advantages):
+            print(f"Move: {move.uci()}, Advantage: {advantage}")
+    else:
+        print("No legal moves found.")
 
-print("Best Move:", best_move.uci())
+if __name__ == "__main__":
+    main()
