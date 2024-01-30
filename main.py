@@ -2,7 +2,7 @@ import chess
 from engine import Evaluate, RestartEval
 import sys
 
-print('Welcome to ChessBite!')
+print('Welcome to Gambit!')
 
 def main():
     # Get user FEN input
