@@ -12,8 +12,8 @@ def main():
     try:
         e = Evaluate(fen_input)
     except RestartEval:
-        print('Error: invalid FEN.', file = sys.stderr)
-        main()
+        print('Error: invalid FEN.', file=sys.stderr)
+        return
 
     # Get the best moves and their evaluations
     best_moves, advantages = e.get_best_moves(num_moves=3)
@@ -30,8 +30,6 @@ while True:
     try:
         main()
     except ValueError:
-        print('Error: invalid FEN.', file = sys.stderr)
-        main()
+        print('Error: invalid FEN.', file=sys.stderr)
     except RestartEval:
-        print('An error occurred.', file = sys.stderr)
-        main()
+        print('An error occurred.', file=sys.stderr)
