@@ -1,6 +1,6 @@
-# ChessBite
+# Gambit
 
-ChessBite is a basic chess engine written in Python.
+Gambit is a basic chess engine written in Python.
 
 ## Features
 - Lightweight
