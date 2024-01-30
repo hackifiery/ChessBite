@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(
-    name='ChessBite',
+    name='Gambit',
     version='0.1',
     py_modules=['main', 'engine'],  # Add all your script/module names here
     install_requires=['python-chess'],
@@ -11,7 +11,7 @@ setup(
         ],
     },
     author='hackifiery',
-    url='https://github.com/hackifiery/ChessBite',
+    url='https://github.com/hackifiery/gambit',
     classifiers=[
         'License :: OSI Approved :: MIT License',
         'Programming Language :: Python :: 3',
